@@ -16,4 +16,13 @@ By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
 ### Testing and Evaluation
 ### Training
 ### Citation 
+Please consider citing the following paper if the code is helpful in your research work:
+<pre>
+@inproceedings{xu2018structured,
+  title={Structured Attention Guided Convolutional Neural Fields for Monocular Depth Estimation},
+  author={Xu, Dan and Wang, Wei and Tang, Hao and Liu, Hong and Sebe, Nicu and Ricci, Elisa},
+  booktitle={CVPR},
+  year={2018}
+}
+</pre>
 
