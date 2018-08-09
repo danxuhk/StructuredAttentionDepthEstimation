@@ -4,7 +4,7 @@ By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
 ## Content
 * [Configuration](#Configuration)
 * [Data Preparation](#Data Preparation)
-* [Tesing and Evaluation] (#Tesing and Evaluation)
-* [Training] (#Training)
-* [Citation] (#Citation)
+* [Tesing and Evaluation](#Tesing and Evaluation)
+* [Training](#Training)
+* [Citation](#Citation)
 
