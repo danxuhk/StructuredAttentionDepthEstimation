@@ -2,7 +2,7 @@
 The code for the above paper which can be downloaded form the link: https://arxiv.org/abs/1803.11029 <br>
 By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
 <p align="center">
-  <img src="figures/framework.jpg" width="700"/>
+  <img src="figures/framework.jpg" width="760"/>
 </p>
 
 ## Content
