@@ -2,12 +2,12 @@
 The code for the above paper which can be downloaded form the link: https://arxiv.org/abs/1803.11029 <br>
 By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci 
 ## Content
-* [Configuration](#Configuration)
-* [Data Preparation](#Data_Preparation)
-* [Tesing and Evaluation](#Tesing_and_Evaluation)
+* [Experimental Setup](#Experimental)
+* [Data Preparation](#Data)
+* [Tesing and Evaluation](#Testing)
 * [Training](#Training)
 * [Citation](#Citation)
-### Configuration
+### Experimental Setup
 ### Data Preparation
 ### Testing and Evaluation
 ### Training
