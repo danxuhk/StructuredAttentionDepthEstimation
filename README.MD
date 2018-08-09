@@ -7,4 +7,9 @@ By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
 * [Tesing and Evaluation](#Tesing and Evaluation)
 * [Training](#Training)
 * [Citation](#Citation)
+### Configuration
+### Data Preparation
+### Testing and Evaluation
+### Training
+### Citation 
 
