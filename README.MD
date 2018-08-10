@@ -21,7 +21,7 @@ Then build caffe and pycaffe:
 <pre>
 cd $StructuredAttentionDepthEstimation_ROOT
 cp Makefile.config.example Makefile.config
-vim Makefile.config // changing neccessary lines
+vim Makefile.config %%%% changing neccessary lines
 sh install.sh
 </pre>
 
