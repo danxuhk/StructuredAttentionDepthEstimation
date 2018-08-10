@@ -13,9 +13,9 @@ from tqdm import tqdm
 sys.path.append('../utils');
 from evaluation_utils import *
 
-data_path = '/path/to/kitti/raw/data/';
+data_path = './data/KITTI/kitti_raw_data/'
 
-gt16bit_dir = '/path/to/kitti/raw/data/gt16bit/'; ##under the kitti raw data path
+gt16bit_dir = './data/KITTI/gt16bit/'
 
 if not os.path.isdir(gt16bit_dir):
     os.makedirs(gt16bit_dir)
