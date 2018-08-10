@@ -20,7 +20,9 @@ sh install.sh
 </pre>
 
 ### Data Preparation <br>
-First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/. Then go to ./data_preparation, and run save_16bitpng_gt.py (changing the path of the kitti raw data and the path for saving the generated 16bit depth data), which will generate a training pair text file under ./utils/filenames for use in the training phase. For testing, the eigen split of 697 images is used.
+First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder ./StructuredAttentionDepthEstimation/data. <br>
+Then go to ./StructuredAttentionDepthEstimation/data, and run python save_16bitpng_gt.py, which will generate a training pair text file under ./utils/filenames for use in the training phase. <br>
+For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
 ### Training
 ### Citation 
