@@ -14,6 +14,13 @@ By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
 ### Experimental Setup <br>
 The code is implemented based on the Caffe framework. Please first download and install the modified caffe version. The code is tested on CUDA 8.0, cudnn 5.1, and python 2.7. 
 #### Installtion <br>
+<pre>
+git clone https://github.com/danxuhk/StructuredAttentionDepthEstimation.git 
+cd $StructuredAttentionDepthEstimation_ROOT
+cp Makefile.config.example Makefile.config
+vim Makefile.config
+sh install.sh
+</pre>
 
 ### Data Preparation
 ### Testing and Evaluation
