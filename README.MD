@@ -5,14 +5,22 @@ By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
   <img src="figures/framework.jpg" width="760"/>
 </p>
 
-## Content
-* [Experimental Setup](#Experimental)
-* [Data Preparation](#Data)
-* [Tesing and Evaluation](#Testing)
-* [Training](#Training)
-* [Citation](#Citation)
-### Experimental Setup
-### Data Preparation
+### Experimental Setup <br>
+The code is implemented based on the Caffe framework. Please first download and install the modified caffe version. The code is tested on CUDA 8.0, cudnn 5.1, and python 2.7. The installation can follow the following instructions: <br>
+First clone the repository: 
+<pre>
+git clone https://github.com/danxuhk/StructuredAttentionDepthEstimation.git 
+</pre>
+Then build caffe and pycaffe:
+<pre>
+cd $StructuredAttentionDepthEstimation_ROOT
+cp Makefile.config.example Makefile.config
+vim Makefile.config %%%% changing neccessary lines
+sh install.sh
+</pre>
+
+### Data Preparation <br>
+First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/. Then go to ./data_preparation, and run save_16bitpng_gt.py (changing the path of the kitti raw data and the path for saving the generated 16bit depth data), which will generate a training pair text file under ./utils/filenames for use in the training phase. For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
 ### Training
 ### Citation 
@@ -26,5 +34,5 @@ Please consider citing the following paper if the code is helpful in your resear
 }
 </pre>
 
-The details are coming soon ...
+More details are coming soon ...
 
