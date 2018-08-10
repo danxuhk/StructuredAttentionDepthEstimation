@@ -19,7 +19,8 @@ vim Makefile.config %%%% changing neccessary lines
 sh install.sh
 </pre>
 
-### Data Preparation
+### Data Preparation <br>
+First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/. Then go to ./data_preparation, and run save_16bitpng_gt.py (changing the path of saving the kitti raw data and the path for saving the generated 16bit depth data), which will generate a training pair text files for use in the training phase.
 ### Testing and Evaluation
 ### Training
 ### Citation 
