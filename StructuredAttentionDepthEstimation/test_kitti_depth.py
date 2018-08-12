@@ -77,9 +77,9 @@ for i in tqdm(range(len(lines))):
        
     if args.save_depth_output == "True":
         #fill the upper part of the depth map
-        pred_depth[0:75, :] = 0
-        img_ori = np.float32(img_ori) / float(255.0)
-        pred_depth_painted = fill_depth_colorization(img_ori, pred_depth)
+        #pred_depth[0:60, :] = 0
+        #img_ori = np.float32(img_ori) / float(255.0)
+        #pred_depth_painted = fill_depth_colorization(img_ori, pred_depth)
         #save depth predictions to single files
         reconstruction_results_dir = './output'
         if not os.path.isdir(reconstruction_results_dir):
@@ -90,12 +90,12 @@ for i in tqdm(range(len(lines))):
         graymap_dir = './output/graymap/'
         if not os.path.isdir(graymap_dir):
             os.mkdir(graymap_dir)
-        #pred_depth_painted = (pred_depth_painted - min_depth) / (max_depth - min_depth);
-        pred_depth_painted = pred_depth_painted - pred_depth_painted.min()
-        pred_depth_painted = pred_depth_painted / pred_depth_painted.max()
+        pred_depth_painted = (pred_depth - min_depth) / (max_depth - min_depth);
+        #pred_depth_painted = pred_depth_painted - pred_depth_painted.min()
+        #pred_depth_painted = pred_depth_painted / pred_depth_painted.max()
         #save gray maps
-        plt.imsave(graymap_dir + str(i).zfill(3) + '.png', (255*pred_depth_painted).astype(np.uint8))
-        #scipy.misc.toimage(255*pred_depth, cmin=0, cmax=255).save(graymap_dir + str(i).zfill(3)+'.png')      
+        #scipy.misc.toimage(255*pred_depth_painted, cmin=0, cmax=255).save(graymap_dir + str(i).zfill(3)+'.png')      
+        plt.imsave(graymap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='gray')
         #save color maps
         plt.imsave(colormap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='plasma')
 np.save(args.pred_file, pred_all)
