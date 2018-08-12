@@ -27,8 +27,8 @@ For testing, the eigen split of 697 images is used.
 Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. To test the trained model, follow the instructions:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
-python gen_deploy_prototxt.py
-sh test.sh % changing 
+python gen_deploy_prototxt.py % generating the deploy prototxt
+sh test.sh % testing and evaluating the model
 </pre>
 The testing results are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper.
 <p align="center">
@@ -36,6 +36,7 @@ The testing results are shown in the table below using both the Eigen and the Ga
 </p>
 
 ### Training
+To retrain the model, please use 
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
 <pre>
