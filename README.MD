@@ -25,7 +25,7 @@ First download KITTI raw data from the official website http://www.cvlibs.net/da
 cd ./StructuredAttentionDepthEstimation/data
 python save_16bitpng_gt.py
 </pre>
-The process will generate a training pair text file under ./utils/filenames for use in the training phase. <br>
+The process will generate a training pair text file 'eigen_train_pairs.txt' under ./utils/filenames for use in the training phase. <br>
 For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
 Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
