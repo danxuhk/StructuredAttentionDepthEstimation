@@ -24,13 +24,25 @@ First download KITTI raw data from the official website http://www.cvlibs.net/da
 Then go to ./StructuredAttentionDepthEstimation/data, and run python save_16bitpng_gt.py, which will generate a training pair text file under ./utils/filenames for use in the training phase. <br>
 For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
-Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>. 
-
+Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
+<pre>
+cd ./StructuredAttentionDepthEstimation/prototxt
+python gen_deploy_prototxt.py % generating the deploy prototxt
+sh test.sh % testing and evaluating the model
+</pre>
+The testing results are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper.
 <p align="center">
   <img src="figures/results.jpg" width="760"/>
 </p>
 
 ### Training
+To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network, and put it under the foler ./models/pretrained_models. To train our model, please follow:
+<pre>
+cd ./StructuredAttentionDepthEstimation/prototxt
+python gen_train_prototxt.py
+python train.py
+</pre>
+
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
 <pre>
