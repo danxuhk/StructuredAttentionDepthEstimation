@@ -1,0 +1,1 @@
+Download pretrained ResNet 50 model here!!!

@@ -179,7 +179,7 @@ def SAN(n, bottom, feat_num, feat_width, feat_height):
 if __name__ == '__main__':
     net = caffe.NetSpec()
     net.data, net.label = L.Python(python_param=dict(module='Pixel_Data_Layer', layer='PixelDataLayer',
-        param_str='{ "batch_size": 4, "data_root_dir": "./StructuredAttentionDepthEstimation/data/KITTI", "list_file": "./utils/filenames/eigen_train_pairs.txt", "scale_factors": [1], "mean_values": [103.939, 116.779, 123.68], "mirror": True, "shuffle": True, "split": "train" }'), ntop=2)
+        param_str='{ "batch_size": 4, "data_root_dir": "./data/KITTI", "list_file": "./utils/filenames/eigen_train_pairs.txt", "scale_factors": [1], "mean_values": [103.939, 116.779, 123.68], "mirror": True, "shuffle": True, "split": "train" }'), ntop=2)
     
     SAN(net, net.data, feat_num=512, feat_width=80, feat_height=24)
     net.prediction_3d_output = L.Interp(net.prediction_3d,  interp_param=dict(height=188, width=621))
