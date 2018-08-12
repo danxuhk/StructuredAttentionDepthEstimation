@@ -100,6 +100,6 @@ if __name__ == '__main__':
     #args = parser.parse_args()
     solver = "./prototxt/solver.prototxt"
     snapshot = ''
-    pretrained_model = "./models/pretrained_models/ResNet-50-model.caffemodel"
-    gpus = [0,2]
+    pretrained_model = "./models/pretrained_models/ResNet-50-pratrained-model.caffemodel"
+    gpus = [0,1]
     train(solver, pretrained_model, snapshot, gpus)
