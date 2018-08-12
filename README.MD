@@ -36,7 +36,11 @@ The testing results are shown in the table below using both the Eigen and the Ga
 </p>
 
 ### Training
-To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network. 
+To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network. To train our model, please follow:
+<pre>
+cd ./StructuredAttentionDepthEstimation/prototxt
+python gen_train_prototxt.py
+</pre>
 
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
