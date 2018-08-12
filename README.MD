@@ -36,7 +36,7 @@ sh test.sh % testing and evaluating the model
 </pre>
 The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. By setting the 'if_save_depth' as 'True', the visualized colormaps and graymaps will be save under ./output/colormaps and ./output/graymaps respectively.
 <p align="center">
-  <img src="figures/results.jpg" width="720"/>
+  <img src="figures/results.jpg" width="710"/>
 </p>
 
 ### Training
