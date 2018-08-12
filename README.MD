@@ -34,7 +34,7 @@ cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_deploy_prototxt.py % generating the deploy prototxt
 sh test.sh % testing and evaluating the model
 </pre>
-The testing results are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper.
+The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper.
 <p align="center">
   <img src="figures/results.jpg" width="760"/>
 </p>
