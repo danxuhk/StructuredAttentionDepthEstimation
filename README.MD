@@ -20,8 +20,12 @@ sh install.sh
 </pre>
 
 ### Data Preparation <br>
-First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder ./StructuredAttentionDepthEstimation/data. <br>
-Then go to ./StructuredAttentionDepthEstimation/data, and run python save_16bitpng_gt.py, which will generate a training pair text file under ./utils/filenames for use in the training phase. <br>
+First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder ./StructuredAttentionDepthEstimation/data/KITTI. To generate the training data, follow the commans:<br>
+<pre>
+cd ./StructuredAttentionDepthEstimation/data
+python save_16bitpng_gt.py
+</pre>
+The process will generate a training pair text file under ./utils/filenames for use in the training phase. <br>
 For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
 Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
@@ -36,7 +40,7 @@ The testing results are shown in the table below using both the Eigen and the Ga
 </p>
 
 ### Training
-To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network, and put it under the foler ./models/pretrained_models. To train our model, please follow:
+To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel. To train our model, please follow:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_train_prototxt.py
@@ -53,6 +57,4 @@ Please consider citing the following paper if the code is helpful in your resear
   year={2018}
 }
 </pre>
-
-More details are coming soon ...
 
