@@ -1,6 +1,6 @@
 ## Structured Attention Guided Convolutional Neural Fields for Monocular Depth Estimation in CVPR 2018  <br>
 The code for the above paper which can be downloaded form the link: https://arxiv.org/abs/1803.11029 <br>
-By Dan Xu, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
+By <a href="http://www.robots.ox.ac.uk/~danxu/">Dan Xu</a>, Wei Wang, Hao Tang, Hong Liu, Nicu Sebe, Elisa Ricci
 <p align="center">
   <img src="figures/framework.jpg" width="760"/>
 </p>
