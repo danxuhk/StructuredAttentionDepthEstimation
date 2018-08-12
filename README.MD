@@ -25,6 +25,7 @@ Then go to ./StructuredAttentionDepthEstimation/data, and run python save_16bitp
 For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
 Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>. 
+
 <p align="center">
   <img src="figures/results.jpg" width="760"/>
 </p>
