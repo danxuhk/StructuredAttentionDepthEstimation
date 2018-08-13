@@ -24,7 +24,7 @@ parser.add_argument('--weights', type=str, default='path/to/trained/caffe/model'
 parser.add_argument('--pred_file', type=str, default='path/to/save/predicted/depth/npy/file, e.g. ./output/depth_all.npy');
 parser.add_argument('--data_root', type=str, default='path/to/kitti/raw/data');
 parser.add_argument('--prediction_blob', type=str, default='name of the final prediction layer output blob, e.g., final_output')
-parser.add_argument('--save_depth_output', type=str, default="False")
+#parser.add_argument('--save_depth_output', type=str, default="False")
 parser.add_argument('--gpu', type=int, default=1)
 parser.add_argument('--img_width', type=int, default=621)
 parser.add_argument('--img_height', type=int, default=188)
@@ -73,30 +73,21 @@ for i in tqdm(range(len(lines))):
     pred_depth[pred_depth > max_depth] = max_depth
 
     #save all depth predicitons to .npy file for evaluation...
-    pred_all[i, :, :] = pred_depth
-       
-    if args.save_depth_output == "True":
-        #fill the upper part of the depth map
-        #pred_depth[0:60, :] = 0
-        #img_ori = np.float32(img_ori) / float(255.0)
-        #pred_depth_painted = fill_depth_colorization(img_ori, pred_depth)
-        #save depth predictions to single files
-        reconstruction_results_dir = './output'
-        if not os.path.isdir(reconstruction_results_dir):
-            os.mkdir(reconstruction_results_dir)
-        colormap_dir = './output/colormap/'
-        if not os.path.isdir(colormap_dir):
-            os.mkdir(colormap_dir)
-        graymap_dir = './output/graymap/'
-        if not os.path.isdir(graymap_dir):
-            os.mkdir(graymap_dir)
-        pred_depth_painted = (pred_depth - min_depth) / (max_depth - min_depth);
-        #pred_depth_painted = pred_depth_painted - pred_depth_painted.min()
-        #pred_depth_painted = pred_depth_painted / pred_depth_painted.max()
-        #save gray maps
-        #scipy.misc.toimage(255*pred_depth_painted, cmin=0, cmax=255).save(graymap_dir + str(i).zfill(3)+'.png')      
-        plt.imsave(graymap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='gray')
-        #save color maps
-        plt.imsave(colormap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='plasma')
+    pred_all[i, :, :] = pred_depth      
+    # if args.save_depth_output == "True":
+    #     #fill the upper part of the depth map
+    #     reconstruction_results_dir = './output'
+    #     if not os.path.isdir(reconstruction_results_dir):
+    #         os.mkdir(reconstruction_results_dir)
+    #     colormap_dir = './output/colormap/'
+    #     if not os.path.isdir(colormap_dir):
+    #         os.mkdir(colormap_dir)
+    #     graymap_dir = './output/graymap/'
+    #     if not os.path.isdir(graymap_dir):
+    #         os.mkdir(graymap_dir)
+    #     pred_depth_painted = (pred_depth - min_depth) / (max_depth - min_depth);
+    #     plt.imsave(graymap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='gray')
+    #     #save color maps
+    #     plt.imsave(colormap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='plasma')
 np.save(args.pred_file, pred_all)
 print('Success!')
