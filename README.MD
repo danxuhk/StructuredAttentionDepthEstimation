@@ -20,7 +20,7 @@ sh install.sh
 </pre>
 
 ### Data Preparation <br>
-First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder ./StructuredAttentionDepthEstimation/data/KITTI. To generate the training data, follow the commans:<br>
+First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder ./StructuredAttentionDepthEstimation/data/KITTI. To generate the training data, follow the commands:<br>
 <pre>
 cd ./StructuredAttentionDepthEstimation/data
 python save_16bitpng_gt.py
