@@ -60,10 +60,10 @@ We refine and fuse the multi-scale features derived from different deep semantic
 </pre>
 The table and the figure below show the quatitative and the qualitative results respectively.
 <p align="center">
-  <img src="figures/results.jpg" width="700"/>
+  <img src="figures/qr.jpg" width="760"/>
 </p>
 <p align="center">
-  <img src="figures/qr.jpg" width="760"/>
+  <img src="figures/results.jpg" width="700"/>
 </p>
 The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
