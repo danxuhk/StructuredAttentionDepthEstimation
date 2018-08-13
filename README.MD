@@ -58,7 +58,7 @@ We refine and fuse the multi-scale features derived from different deep semantic
     MeanFieldUpdate(n, n.res4f_dec, n.updated_f1_mf5, 2, 5, feat_num)
     MeanFieldUpdate(n, n.res5c_dec, n.updated_f2_mf5, 3, 5, feat_num)
 </pre>
-
+The table and the figure below show the quatitative and the qualitative results respectively.
 <p align="center">
   <img src="figures/results.jpg" width="700"/>
 </p>
