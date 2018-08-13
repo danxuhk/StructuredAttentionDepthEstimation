@@ -38,6 +38,9 @@ The testing results on KITTI are shown in the table below using both the Eigen a
 <p align="center">
   <img src="figures/results.jpg" width="700"/>
 </p>
+<p align="center">
+  <img src="figures/qr.jpg" width="760"/>
+</p>
 The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
 ### Training
@@ -48,9 +51,6 @@ python gen_train_prototxt.py
 python train.py
 </pre>
 The training supports multiple GPU speedup. You can modify the iter_size in the ./prototxt/solver.prototxt, the batch_size in gen_train_prototxt.py and the gpu number in train.py to change the overall batch size. The # of overall batch size = # of gpus * batch_size * iter_size. 
-<p align="center">
-  <img src="figures/qr.jpg" width="750"/>
-</p>
 
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
