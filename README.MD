@@ -13,7 +13,7 @@ git clone https://github.com/danxuhk/StructuredAttentionDepthEstimation.git
 </pre>
 Then build caffe and pycaffe:
 <pre>
-cd $StructuredAttentionDepthEstimation_ROOT
+cd $Caffe_ROOT
 cp Makefile.config.example Makefile.config
 vim Makefile.config %%%% changing neccessary lines
 sh install.sh
