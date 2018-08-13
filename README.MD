@@ -35,7 +35,7 @@ python gen_deploy_prototxt.py % generating the deploy prototxt
 sh test.sh % testing and evaluating the model
 </pre>
 The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
-We refine and fuse the multi-scale features from different deep semantic layers using the proposed MeanFieldUpdate module as follows:
+We refine and fuse the multi-scale features derived from different deep semantic layers using the proposed MeanFieldUpdate module as follows:
 <pre>
     #the first meanfield updating
     MeanFieldUpdate(n, n.res3d_dec, n.res5c_dec, 1, 1, feat_num)
