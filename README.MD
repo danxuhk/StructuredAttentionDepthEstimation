@@ -38,7 +38,7 @@ The testing results on KITTI are shown in the table below using both the Eigen a
 <p align="center">
   <img src="figures/results.jpg" width="700"/>
 </p>
-The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/1NS2ZXI-q6PORCKb-vC7WInv_ucFffbZI?usp=sharing">here</a>.
+The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
 ### Training
 To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel. To train our model, please follow:
@@ -48,6 +48,9 @@ python gen_train_prototxt.py
 python train.py
 </pre>
 The training supports multiple GPU speedup. You can modify the iter_size in the ./prototxt/solver.prototxt, the batch_size in gen_train_prototxt.py and the gpu number in train.py to change the overall batch size. The # of overall batch size = # of gpus * batch_size * iter_size. 
+<p align="center">
+  <img src="figures/qr.jpg" width="750"/>
+</p>
 
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
