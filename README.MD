@@ -57,7 +57,7 @@ We refine and fuse the multi-scale features derived from different deep semantic
     MeanFieldUpdate(n, n.res4f_dec, n.updated_f1_mf5, 2, 5, feat_num)
     MeanFieldUpdate(n, n.res5c_dec, n.updated_f2_mf5, 3, 5, feat_num)
 </pre>
-Our testing runs very fast, and approaches around <B>9 fps</B> in <B>nearly real-time</B>, which is significantly faster than previous graphical model-based approaches for single image depth estimation. The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
+Our testing runs very fast, and approaches around <B>8 fps</B> in <B>nearly real-time</B>, which is significantly faster than previous graphical model-based approaches for single image depth estimation. The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
 The table and the figure below show the qualitative and the quatitative results respectively.
 <p align="center">
   <img src="figures/qr.jpg" width="760"/>
