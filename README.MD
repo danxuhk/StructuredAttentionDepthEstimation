@@ -15,7 +15,7 @@ Then build caffe and pycaffe:
 <pre>
 cd $Caffe_ROOT
 cp Makefile.config.example Makefile.config
-vim Makefile.config %%%% changing neccessary lines
+vim Makefile.config ### changing neccessary lines
 sh install.sh
 </pre>
 
@@ -31,8 +31,8 @@ For testing, the eigen split of 697 images is used.
 Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
-python gen_deploy_prototxt.py % generating the deploy prototxt
-sh test.sh % testing and evaluating the model
+python gen_deploy_prototxt.py ### generating the deploy prototxt
+sh test.sh ### testing and evaluating the model
 </pre>
 The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
 We refine and fuse the multi-scale features derived from different deep semantic layers using the proposed MeanFieldUpdate module as follows:
