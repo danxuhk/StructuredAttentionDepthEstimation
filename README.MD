@@ -20,15 +20,15 @@ sh install.sh
 </pre>
 
 ### Data Preparation <br>
-First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder ./StructuredAttentionDepthEstimation/data/KITTI. To generate the training data, follow the commands:<br>
+First download KITTI raw data from the official website http://www.cvlibs.net/datasets/kitti/ to the folder `./StructuredAttentionDepthEstimation/data/KITTI`. To generate the training data, follow the commands:<br>
 <pre>
 cd ./StructuredAttentionDepthEstimation/data
 python save_16bitpng_gt.py
 </pre>
-The process will generate a training pair text file 'eigen_train_pairs.txt' under ./utils/filenames for use in the training phase. <br>
+The process will generate a training pair text file 'eigen_train_pairs.txt' under `./utils/filenames` for use in the training phase. <br>
 For testing, the eigen split of 697 images is used.
 ### Testing and Evaluation
-Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
+Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under `./StructuredAttentionDepthEstimation/models`. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_deploy_prototxt.py ### generating a network definition for the deploy network
@@ -68,7 +68,7 @@ The table and the figure below show the qualitative and the quatitative results 
 The produced visualization results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
 ### Training
-To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel, which will be used as an initialization of our backbone network. To train our whole model, please follow:
+To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler `./StructuredAttentionDepthEstimation/models/pretrained_model`, and rename it with `ResNet-50-pratrained-model.caffemodel`, which will be used as an initialization of our backbone network. To train our whole model, please follow:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_train_prototxt.py ### generate a network definition for the training network 
