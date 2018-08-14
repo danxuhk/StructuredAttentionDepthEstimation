@@ -15,7 +15,7 @@ Then build caffe and pycaffe:
 <pre>
 cd $Caffe_ROOT
 cp Makefile.config.example Makefile.config
-vim Makefile.config ### changing neccessary lines
+vim Makefile.config ### changing neccessary lines to add dependancy
 sh install.sh
 </pre>
 
