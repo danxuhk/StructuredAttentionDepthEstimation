@@ -68,7 +68,7 @@ The table and the figure below show the qualitative and the quatitative results 
 The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
 ### Training
-To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on ImageNet as an initialization of our backbone network, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel. To train our model, please follow:
+To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel, which will be used as an initialization of our backbone network. To train our model, please follow:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_train_prototxt.py ### generate a prototxt for the training network 
