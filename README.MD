@@ -31,7 +31,7 @@ For testing, the eigen split of 697 images is used.
 Please first download the trained model from <a href="https://drive.google.com/drive/folders/1z0wUkS0jWurqkNQGx6RyihqRZ3aK44Lu?usp=sharing">Google Drive</a>, and put the model under ./StructuredAttentionDepthEstimation/models. The saved testing results can be also downloaded the same link. To test the trained model, follow the instructions:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
-python gen_deploy_prototxt.py ### generating prototxt for the deploy network
+python gen_deploy_prototxt.py ### generating a network definition for the deploy network
 sh test.sh ### testing and evaluating the model
 </pre>
 The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
@@ -71,7 +71,7 @@ The produced visualized results can be downloaded from <a href="https://drive.go
 To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel, which will be used as an initialization of our backbone network. To train our model, please follow:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
-python gen_train_prototxt.py ### generate a prototxt for the training network 
+python gen_train_prototxt.py ### generate a network definition for the training network 
 python train.py
 </pre>
 The training supports multiple GPU speedup. You can modify the iter_size in the ./prototxt/solver.prototxt, the batch_size in gen_train_prototxt.py and the gpu number in train.py to change the overall batch size. The # of overall batch size = # of gpus * batch_size * iter_size. 
