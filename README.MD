@@ -74,7 +74,7 @@ cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_train_prototxt.py ### generate a network definition for the training network 
 python train.py
 </pre>
-The training supports multiple GPU speedup. You can modify the iter_size in the ./prototxt/solver.prototxt, the batch_size in gen_train_prototxt.py and the gpu number in train.py to change the overall batch size. The # of overall batch size = # of gpus * batch_size * iter_size. 
+The training supports multiple GPU speedup. You can modify the iter_size in the `./prototxt/solver.prototxt`, the batch_size in `gen_train_prototxt.py` and the gpu number in `train.py` to change the overall batch size. The # of overall batch size = # of gpus * batch_size * iter_size. 
 
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
