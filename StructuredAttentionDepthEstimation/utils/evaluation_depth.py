@@ -66,17 +66,9 @@ def main():
                               0.0359477 * gt_width,   0.96405229 * gt_width]).astype(np.int32)
         else:
             sys.exit("The crop type should be specified!!! Either eigen or garg!!!")
-
-        #if args.which_crop == "garg":
-        #    crop = np.array([0.40810811 * gt_height,  0.99189189 * gt_height, \
-        #                     0.03594771 * gt_width,   0.96405229 * gt_width]).astype(np.int32)
         crop_mask = np.zeros(mask.shape)
         crop_mask[crop[0]:crop[1],crop[2]:crop[3]] = 1
         mask = np.logical_and(mask, crop_mask)
-
-        # Scale matching
-        #scalor = np.median(gt_depth[mask])/np.median(pred_depth[mask])
-        #pred_depth[mask] *= scalor
 
         pred_depth[pred_depth < args.min_depth] = args.min_depth
         pred_depth[pred_depth > args.max_depth] = args.max_depth

@@ -74,20 +74,5 @@ for i in tqdm(range(len(lines))):
 
     #save all depth predicitons to .npy file for evaluation...
     pred_all[i, :, :] = pred_depth      
-    # if args.save_depth_output == "True":
-    #     #fill the upper part of the depth map
-    #     reconstruction_results_dir = './output'
-    #     if not os.path.isdir(reconstruction_results_dir):
-    #         os.mkdir(reconstruction_results_dir)
-    #     colormap_dir = './output/colormap/'
-    #     if not os.path.isdir(colormap_dir):
-    #         os.mkdir(colormap_dir)
-    #     graymap_dir = './output/graymap/'
-    #     if not os.path.isdir(graymap_dir):
-    #         os.mkdir(graymap_dir)
-    #     pred_depth_painted = (pred_depth - min_depth) / (max_depth - min_depth);
-    #     plt.imsave(graymap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='gray')
-    #     #save color maps
-    #     plt.imsave(colormap_dir + str(i).zfill(3) + '.png', pred_depth_painted, cmap='plasma')
 np.save(args.pred_file, pred_all)
 print('Success!')
