@@ -65,7 +65,7 @@ The table and the figure below show the qualitative and the quatitative results 
 <p align="center">
   <img src="figures/results.jpg" width="700"/>
 </p>
-The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
+The produced visualization results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
 ### Training
 To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel, which will be used as an initialization of our backbone network. To train our whole model, please follow:
