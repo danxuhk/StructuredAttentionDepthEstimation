@@ -34,7 +34,6 @@ cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_deploy_prototxt.py ### generating a network definition for the deploy network
 sh test.sh ### testing and evaluating the model
 </pre>
-Our testing runs very fast, and approaches around <B 9 fps /B> in nearly real-time. The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
 We refine and fuse the multi-scale features derived from different deep semantic layers (e.g. res3d, res4f, res5c layers) using the proposed MeanFieldUpdate module as follows:
 <pre>
     #the first meanfield updating
@@ -58,6 +57,7 @@ We refine and fuse the multi-scale features derived from different deep semantic
     MeanFieldUpdate(n, n.res4f_dec, n.updated_f1_mf5, 2, 5, feat_num)
     MeanFieldUpdate(n, n.res5c_dec, n.updated_f2_mf5, 3, 5, feat_num)
 </pre>
+Our testing runs very fast, and approaches around <B>9 fps</B> in nearly real-time. The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
 The table and the figure below show the qualitative and the quatitative results respectively.
 <p align="center">
   <img src="figures/qr.jpg" width="760"/>
