@@ -34,7 +34,7 @@ cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_deploy_prototxt.py ### generating a network definition for the deploy network
 sh test.sh ### testing and evaluating the model
 </pre>
-The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
+Our testing runs very fast, and approaches around <B 9 fps /B> in nearly real-time. The testing results on KITTI are shown in the table below using both the Eigen and the Garg crop. We further improved the accuracy over the results in the paper. 
 We refine and fuse the multi-scale features derived from different deep semantic layers (e.g. res3d, res4f, res5c layers) using the proposed MeanFieldUpdate module as follows:
 <pre>
     #the first meanfield updating
@@ -68,7 +68,7 @@ The table and the figure below show the qualitative and the quatitative results 
 The produced visualized results can be downloaded from <a href="https://drive.google.com/drive/folders/16UTD1ozJgIDRCtOjfG5DoLrHMkepiofQ?usp=sharing">here</a>.
 
 ### Training
-To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel, which will be used as an initialization of our backbone network. To train our model, please follow:
+To retrain the model, please first download the <a href="https://github.com/KaimingHe/deep-residual-networks">ResNet50 pretrained model</a> on the ImageNet, and then put it under the foler ./models/pretrained_model, and rename it with ResNet-50-pratrained-model.caffemodel, which will be used as an initialization of our backbone network. To train our whole model, please follow:
 <pre>
 cd ./StructuredAttentionDepthEstimation/prototxt
 python gen_train_prototxt.py ### generate a network definition for the training network 
