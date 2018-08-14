@@ -6,7 +6,7 @@ By <a href="http://www.robots.ox.ac.uk/~danxu/">Dan Xu</a>, Wei Wang, Hao Tang, 
 </p>
 
 ### Installation & Setup <br>
-<div style="background-color:#cccccc; text-align:left; vertical-align: middle; padding:20px 47px;"> Example </div> The code is implemented based on the Caffe framework. Please first download and install the modified caffe version. The code is tested on CUDA 8.0, cudnn 5.1, and python 2.7. The installation can follow the following instructions: <br>
+<div style="background-color:#000000; text-align:left; vertical-align: middle; padding:20px 47px;"> Example </div> The code is implemented based on the Caffe framework. Please first download and install the modified caffe version. The code is tested on CUDA 8.0, cudnn 5.1, and python 2.7. The installation can follow the following instructions: <br>
 First clone the repository: 
 <pre>
 git clone https://github.com/danxuhk/StructuredAttentionDepthEstimation.git 
