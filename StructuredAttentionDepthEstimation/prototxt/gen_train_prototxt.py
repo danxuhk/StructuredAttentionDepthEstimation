@@ -99,7 +99,6 @@ def MeanFieldUpdate(n, bottom_send, bottom_receive, feat_ind, mf_iter, feat_num)
     conv_f = 'conv_f{}_mf{}'.format(feat_ind, mf_iter)
     atten_f = 'atten_f{}_mf{}'.format(feat_ind, mf_iter)
     norm_atten_f = 'norm_atten_f{}_mf{}'.format(feat_ind, mf_iter)
-    norm_atten_f_tile = 'norm_atten_f_tile{}_mf{}'.format(feat_ind, mf_iter)
     message_f = 'message_f{}_mf{}'.format(feat_ind, mf_iter)
     filter_message_f = 'filter_message_f{}_mf{}'.format(feat_ind, mf_iter)
     message_scaled = 'message_scaled_f{}_mf{}'.format(feat_ind, mf_iter)
@@ -107,11 +106,10 @@ def MeanFieldUpdate(n, bottom_send, bottom_receive, feat_ind, mf_iter, feat_num)
 
     n[concat_f] = L.Concat(bottom_send, bottom_receive)
     #specify parameter names to make them share between different meanfield updating
-    n[atten_f] = L.Convolution(n[concat_f], num_output=1, kernel_size=3, stride=1, pad=1, param=[dict(name='atten_f{}_w'.format(feat_ind), lr_mult=1, decay_mult=1), dict(name='atten_f{}_b'.format(feat_ind), lr_mult=2, decay_mult=0)])
+    n[atten_f] = L.Convolution(n[concat_f], num_output=feat_num, kernel_size=3, stride=1, pad=1, param=[dict(name='atten_f{}_w'.format(feat_ind), lr_mult=1, decay_mult=1), dict(name='atten_f{}_b'.format(feat_ind), lr_mult=2, decay_mult=0)])
     n[norm_atten_f] = L.Sigmoid(n[atten_f])
-    n[norm_atten_f_tile] = L.Tile(net[norm_atten_f], tile_param=dict(axis=1, tiles=feat_num))
     n[message_f] = L.Convolution(bottom_send, num_output=feat_num, kernel_size=3, stride=1, pad=1, param=[dict(name='message_f{}_w'.format(feat_ind), lr_mult=1, decay_mult=1), dict(name='message_f{}_b'.format(feat_ind), lr_mult=2, decay_mult=0)])
-    n[filter_message_f] = L.Eltwise(n[message_f], n[norm_atten_f_tile], operation=P.Eltwise.PROD)
+    n[filter_message_f] = L.Eltwise(n[message_f], n[norm_atten_f], operation=P.Eltwise.PROD)
     #scale the messages before adding 
     n[message_scaled] = L.Scale(n[filter_message_f], bias_term=True, in_place=True)
     n[updated_f] = L.Eltwise(bottom_receive, n[message_scaled], operation=P.Eltwise.SUM)  
@@ -164,6 +162,10 @@ def SAN(n, bottom, feat_num, feat_width, feat_height):
     MeanFieldUpdate(n, n.res3d_dec, n.updated_f3_mf4, 1, 5, feat_num)
     MeanFieldUpdate(n, n.res4f_dec, n.updated_f1_mf5, 2, 5, feat_num)
     MeanFieldUpdate(n, n.res5c_dec, n.updated_f2_mf5, 3, 5, feat_num)
+
+    #using a concatanation instead of meanfield updating
+    #n.concat_all = L.Concat(n.res3d_dec, n.res4f_dec, n.res5c_dec_relu)
+    #n.dropout_l = L.Dropout(n.concat_all, in_place=True, dropout_ratio=0.3)
     
     #produce the output 
     n.prediction_map_1 = L.Deconvolution(n.updated_f3_mf5, convolution_param=dict(num_output=feat_num/2, kernel_size=4, stride=2, pad=1, 
@@ -175,11 +177,16 @@ def SAN(n, bottom, feat_num, feat_width, feat_height):
         param=[dict(lr_mult=1, decay_mult=1), dict(lr_mult=2, decay_mult=0)])
     n.prediction_map_2_relu = L.ReLU(n.prediction_map_2, in_place=True)
     n.prediction_map = L.Convolution(n.prediction_map_2_relu, num_output=1, kernel_size=3, stride=1, pad=1)
+
+    #n.prediction_map_ori_resolution = L.Interp(n.prediction_map, interp_param=dict(height=, width=feat_width))
+    #n.prediction_map_ori_resolution = L.Deconvolution(n.prediction_map, convolution_param=dict(num_output=1, kernel_size=8, stride=4, pad=2, bias_term=False), param=[dict(lr_mult=0)])
     
 if __name__ == '__main__':
     net = caffe.NetSpec()
+    #net.data = L.Data(source='./lmdb/train_data_kitti_80_lmdb', backend=P.Data.LMDB, batch_size=4, ntop=1, transform_param=dict(mean_value=[103.939, 116.779, 123.68]))
+    #net.label = L.Data(source='./lmdb/train_label_kitti_80_lmdb', backend=P.Data.LMDB, batch_size=4, ntop=1)
     net.data, net.label = L.Python(python_param=dict(module='Pixel_Data_Layer', layer='PixelDataLayer',
-        param_str='{ "batch_size": 4, "data_root_dir": "./data/KITTI", "list_file": "./utils/filenames/eigen_train_pairs.txt", "scale_factors": [1], "mean_values": [103.939, 116.779, 123.68], "mirror": True, "shuffle": True, "split": "train" }'), ntop=2)
+        param_str='{ "batch_size": 4, "data_root_dir": "/scratch/local/ssd/danxu/KITTI", "list_file": "/home/danxu/projects/StructuredAttentionDepth/utils/filenames/eigen_train_pairs.txt", "scale_factors": [1], "mean_values": [103.939, 116.779, 123.68], "mirror": True, "shuffle": True, "split": "train" }'), ntop=2)
     
     SAN(net, net.data, feat_num=512, feat_width=80, feat_height=24)
     net.prediction_3d_output = L.Interp(net.prediction_3d,  interp_param=dict(height=188, width=621))
@@ -187,9 +194,9 @@ if __name__ == '__main__':
     net.prediction_5c_output = L.Interp(net.prediction_5c,  interp_param=dict(height=188, width=621))
     net.final_output = L.Interp(net.prediction_map,  interp_param=dict(height=188, width=621))
     #loss
-    net.loss_3d = L.EuclideanMaskLoss(net.prediction_3d_output, net.label, loss_weight=0.6)    
-    net.loss_4f = L.EuclideanMaskLoss(net.prediction_4f_output, net.label, loss_weight=0.6)  
-    net.loss_5c = L.EuclideanMaskLoss(net.prediction_5c_output, net.label, loss_weight=0.6) 
+    net.loss_3d = L.EuclideanMaskLoss(net.prediction_3d_output, net.label, loss_weight=0.8)    
+    net.loss_4f = L.EuclideanMaskLoss(net.prediction_4f_output, net.label, loss_weight=0.8)  
+    net.loss_5c = L.EuclideanMaskLoss(net.prediction_5c_output, net.label, loss_weight=0.8) 
     net.loss_final = L.EuclideanMaskLoss(net.final_output, net.label, loss_weight=1)
     with open('train_SAN.prototxt', 'w') as f:
         f.write(str(net.to_proto()))
