@@ -113,7 +113,6 @@ def MeanFieldUpdate(n, bottom_send, bottom_receive, feat_ind, mf_iter, feat_num)
     #scale the messages before adding 
     n[message_scaled] = L.Scale(n[filter_message_f], bias_term=True, in_place=True)
     n[updated_f] = L.Eltwise(bottom_receive, n[message_scaled], operation=P.Eltwise.SUM)  
-
                    
 def SAN(n, bottom, feat_num, feat_width, feat_height):
     '''
@@ -135,8 +134,7 @@ def SAN(n, bottom, feat_num, feat_width, feat_height):
     n.res4f_dec = L.Interp(n.res4f_dec_1_relu, interp_param=dict(height=feat_height, width=feat_width))
     n.res3d_dec = L.Interp(n.res3d_relu,  interp_param=dict(height=feat_height, width=feat_width))
     n.res5c_dec = L.Interp(n.res5c_dec_1_relu, interp_param=dict(height=feat_height, width=feat_width))
-    
-    
+        
     ##add deep supervision for three semantic layers
     n.prediction_3d = L.Convolution(n.res3d_dec, num_output=1, kernel_size=3, stride=1, pad=1)
     n.prediction_4f = L.Convolution(n.res4f_dec, num_output=1, kernel_size=3, stride=1, pad=1)
