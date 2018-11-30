@@ -162,10 +162,6 @@ def SAN(n, bottom, feat_num, feat_width, feat_height):
     MeanFieldUpdate(n, n.res3d_dec, n.updated_f3_mf4, 1, 5, feat_num)
     MeanFieldUpdate(n, n.res4f_dec, n.updated_f1_mf5, 2, 5, feat_num)
     MeanFieldUpdate(n, n.res5c_dec, n.updated_f2_mf5, 3, 5, feat_num)
-
-    #using a concatanation instead of meanfield updating
-    #n.concat_all = L.Concat(n.res3d_dec, n.res4f_dec, n.res5c_dec_relu)
-    #n.dropout_l = L.Dropout(n.concat_all, in_place=True, dropout_ratio=0.3)
     
     #produce the output 
     n.prediction_map_1 = L.Deconvolution(n.updated_f3_mf5, convolution_param=dict(num_output=feat_num/2, kernel_size=4, stride=2, pad=1, 
@@ -177,14 +173,9 @@ def SAN(n, bottom, feat_num, feat_width, feat_height):
         param=[dict(lr_mult=1, decay_mult=1), dict(lr_mult=2, decay_mult=0)])
     n.prediction_map_2_relu = L.ReLU(n.prediction_map_2, in_place=True)
     n.prediction_map = L.Convolution(n.prediction_map_2_relu, num_output=1, kernel_size=3, stride=1, pad=1)
-
-    #n.prediction_map_ori_resolution = L.Interp(n.prediction_map, interp_param=dict(height=, width=feat_width))
-    #n.prediction_map_ori_resolution = L.Deconvolution(n.prediction_map, convolution_param=dict(num_output=1, kernel_size=8, stride=4, pad=2, bias_term=False), param=[dict(lr_mult=0)])
     
 if __name__ == '__main__':
     net = caffe.NetSpec()
-    #net.data = L.Data(source='./lmdb/train_data_kitti_80_lmdb', backend=P.Data.LMDB, batch_size=4, ntop=1, transform_param=dict(mean_value=[103.939, 116.779, 123.68]))
-    #net.label = L.Data(source='./lmdb/train_label_kitti_80_lmdb', backend=P.Data.LMDB, batch_size=4, ntop=1)
     net.data, net.label = L.Python(python_param=dict(module='Pixel_Data_Layer', layer='PixelDataLayer',
         param_str='{ "batch_size": 4, "data_root_dir": "/scratch/local/ssd/danxu/KITTI", "list_file": "/home/danxu/projects/StructuredAttentionDepth/utils/filenames/eigen_train_pairs.txt", "scale_factors": [1], "mean_values": [103.939, 116.779, 123.68], "mirror": True, "shuffle": True, "split": "train" }'), ntop=2)
     
