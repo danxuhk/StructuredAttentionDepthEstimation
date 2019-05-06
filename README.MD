@@ -78,6 +78,10 @@ python train.py
 The training supports multiple GPU speedup. You can modify the iter_size in the `./prototxt/solver.prototxt`, the batch_size in `gen_train_prototxt.py` and the gpu number in `train.py` to change the overall batch size. <br> 
 The # of overall batch size = # of gpus * batch_size * iter_size. 
 
+### Pytorch Implementation
+A Pytorch implementation of our model can be found here:  
+https://github.com/dontLoveBugs/StructuredAttentionDepthEstimation_pytorch
+
 ### Citation 
 Please consider citing the following paper if the code is helpful in your research work:
 <pre>
